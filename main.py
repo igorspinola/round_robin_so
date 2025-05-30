@@ -28,14 +28,17 @@ p3 = {
 lista_de_espera.append(p1)
 lista_de_espera.append(p2)
 lista_de_espera.append(p3)
-
+numero_processos = len(lista_de_espera)
 tempo = 0
 
-while tempo < 2000:
+while len(concluidos) != numero_processos:
+    print(tempo)
     for p in lista_de_espera:
         if p["chegada"] == tempo:
             processos.append(p)
             lista_de_espera.remove(p)
+    if len(processos) == 0:
+        continue
     primeiro = processos[0]
     if primeiro["inicio"] == -1:
         primeiro["inicio"] = tempo
@@ -59,4 +62,5 @@ tempo_total = 0
 for p in concluidos:
     print("tempo de resposta:" + str(p["inicio"] - p["chegada"]))
     tempo_total += p["inicio"] - p["chegada"]
-print("tempo de resposta medio: " + str(tempo_total / len(concluidos)))
+if len(concluidos) > 0:
+    print("tempo de resposta medio: " + str(tempo_total / len(concluidos)))
