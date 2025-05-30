@@ -33,22 +33,22 @@ tempo = 0
 
 while tempo < 2000:
     for p in lista_de_espera:
-        if p.chegada == tempo:
+        if p["chegada"] == tempo:
             processos.append(p)
             lista_de_espera.remove(p)
     primeiro = processos[0]
-    if primeiro.incio == -1:
-        primeiro.inicio = tempo
+    if primeiro["inicio"] == -1:
+        primeiro["inicio"] = tempo
 
     if tempo % 2 == 0:
-        ordem.append(primeiro.nome)
-        if primeiro.execucao > 2:
-            primeiro.execucao -= 2
+        ordem.append(primeiro["nome"])
+        if primeiro["execucao"] > 2:
+            primeiro["execucao"] -= 2
             processos.append(primeiro)
             processos.pop(0)
-        elif primeiro.execucao <= 2:
-            primeiro.execucao -= 2
-            primeiro.final = tempo + primeiro.execucao
+        elif primeiro["execucao"] <= 2:
+            primeiro["execucao"] -= 2
+            primeiro["final"] = tempo + primeiro["execucao"]
             concluidos.append(primeiro)
             processos.pop(0)
 
@@ -57,6 +57,6 @@ while tempo < 2000:
 print(*ordem)
 tempo_total = 0
 for p in concluidos:
-    print("tempo de resposta:" + str(p.inicio - p.chegada))
-    tempo_total += p.inicio - p.chegada
+    print("tempo de resposta:" + str(p["inicio"] - p["chegada"]))
+    tempo_total += p["inicio"] - p["chegada"]
 print("tempo de resposta medio: " + str(tempo_total / len(concluidos)))
