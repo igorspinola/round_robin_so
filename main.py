@@ -71,7 +71,7 @@ for p in concluidos:
     print(f"{p['nome']}:")
     print(f"  Tempo de resposta: {resposta}")
     print(f"  Tempo de espera: {espera}")
-    print(f"  Tempo total do processo: {tempo_total}")
+    print(f"  Tempo total do processo: {tempo_total}\n")
     
     tempo_total_resposta += resposta
     tempo_total_espera += espera
